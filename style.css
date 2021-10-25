@@ -1,0 +1,247 @@
+/*css reset */
+ .formerror {
+            color: red;
+        }
+*{
+	margin:0px;
+	padding:0px;
+}
+/*css variables*/
+:root{
+	--navbar-height:59px;
+}
+#navbar{
+	position: relative;
+	font-family: 'Baloo Bhai 2', cursive;
+}
+#navbar{
+	display: flex;	
+	flex-direction: row;
+	align-items: center;
+}
+#navbar::before{
+	content:"";
+	background-color: black;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index: -1;
+	opacity: 0.4;
+}
+h1{
+	font-size:1.8rem;
+	padding:20px;
+}
+
+/*navigation bar=logo and image*/
+#logo{
+margin:8px 16px;
+}
+#logo img{
+margin:7px 9px;
+    height: 41px;
+}
+#navbar ul{
+	display: flex;
+}
+#navbar ul li{
+	list-style: none;
+	font-size: 1.3rem;
+}
+#navbar ul li a{
+	color:white;
+	display: inline-block;
+	padding:2px 22px;
+	border-radius: 20px;
+	text-decoration: none;
+}
+#navbar ul li a:hover{
+	color:black;
+	background-color: red;
+	}
+/*home sectiom*/
+#home{
+	font-family: 'Bree Serif', serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding:10px 87px;
+	height: 340px;
+	margin: 0px 0px;
+	align-items: center;
+	/*position: relative;*/
+}
+#home::before{
+	content:"";
+	background:url(https://thumbs.dreamstime.com/b/people-eating-lunchboxes-grey-table-top-view-healthy-food-delivery-161242402.jpg) no-repeat center center/cover;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:73%;
+	z-index: -1;
+	opacity: 0.89;
+}
+/*utility classes...mtlab hm hr heading mein ye classes dal skty*/
+.hprimary{
+font-size: 2.8rem;
+padding: 20px;
+font-family: 'Bree Serif', serif;
+}
+h1{
+	color:black;
+	text-align: center;
+}
+p{
+	color:black;
+	text-align: center;
+}
+/*sevices section*/
+#services{
+	display: flex;
+	flex-direction: row;
+
+}
+.box{
+	border:2px solid black;
+	justify-content: space-between;
+	padding: 24px;
+    margin: 25px 6px;
+    border-radius: 36px;
+    background-color: #efe5e5;
+    margin-bottom: 20px;
+
+}
+#services .box img{
+	height: 155px;
+	margin: auto;
+	display: block;
+}
+#btn{
+	padding:6px 20px;
+	border:2px solid black;
+	border-radius: 18px;
+    margin: 15px;
+    font-size: 1.2rem;
+    cursor:pointer;
+    display: block;
+    width: auto;
+}
+.center{
+	text-align: center;
+}
+.hsecondary{
+	font-family: 'Bree Serif', serif;
+
+}
+#services .box p{
+	font-family: 'Bree Serif', serif;
+}
+/*client section*/
+#clients{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.clientitem{
+	padding: 34px;
+}
+.clientitem img{
+	height: 167px;
+}
+#clientsection::before{
+	content:"";
+	background: url(https://img.lovepik.com//back_pic/05/81/53/975c3728fd82e0f.jpg_wh860.jpg) no-repeat center center/cover;
+	position: absolute;
+	width:100%;
+	height:100%;
+	z-index: -1;
+	opacity: 0.5;
+}
+#clientsection{
+	position: relative;  
+	height: 445px;;  /*agr hm client section ki height ko relative krein gy tow isk before mein background sirf utni height ly ga jitni height yahan mention ki hoi hy yani utni jaga ly ga jitni 755px mein chahiye hy*/
+
+}
+/*contact section*/
+#contact{
+	position: relative;
+}
+#contact::before{
+	content: "";
+	background:url(https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) no-repeat center center/cover;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	opacity: 0.4;
+}
+#contact-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 34px;
+	
+
+}
+#contact-box form{
+	width: 40%;
+}
+#contact-box label{
+	font-size: 1.3rem;
+	font-family: 'Bree Serif', serif;
+}
+input,textarea{
+	width:100%;
+	padding: 0.5rem;
+	border-radius: 9px;
+	font-size: 1.1rem;
+}
+form .form-group input[type="checkbox"]{
+	width: auto;
+}
+form .form-group input[type="radio"]{
+	width: auto;
+}
+form .form-group input[type="file"]{
+	width: auto;
+}
+
+footer{
+	background-color: black;
+	color: white;
+	padding: 9px 9px;
+}
+.success {
+	background-color: #c3b0b0;;
+	color: #ecdfdf;
+	padding: 17px 8px;
+	margin: 6px 0px;
+	font-family: calibri;
+	position: sticky;
+	top: 0px;
+}
+
+.error {
+	background-color: red;
+	color: white;
+	padding: 3px 10px;
+	margin: 3px 10px;
+	font-family: calibri;
+	position: sticky;
+	top: 0px;
+}
+table {
+	text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+

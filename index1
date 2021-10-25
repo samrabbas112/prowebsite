@@ -1,0 +1,175 @@
+<?php
+
+session_start();
+$_SESSION["user"]["image"] = "https://aceconnect.net.pk/assets/frontend/img/logo.png";
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="file.js"></script>
+</head>
+<body>
+	
+	<div id="main-container">
+		<img src="<?php echo $_SESSION["user"]["image"]; ?>">
+		<?php //require 'sdfsdf.php'; ?>
+		<nav id="main-nav">
+			<ul>
+				<li><a class="active" href="#">Home</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Career</a></li>
+				<li><a href="#">Contact Us</a></li>
+				<li><a href="list.php">Users</a></li>
+			</ul>
+		</nav>
+		<div id="main-content">
+			<aside>
+				<h1>Useful Links</h1>
+				<nav>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Career</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="list.php">Users</a></li>
+					</ul>
+				</nav>
+				<img src="EXEnhoTUcAMAWI1.jpg" width="250" id="img" onclick="hover()">
+			</aside>
+			<article>
+				
+				<h1 class="<?php  echo (isset($class)) ? $class : ''; ?>">Welcome to ACE CONNECT</h1>	
+
+				<?php if( !empty($_SESSION['msg']) ): ?>
+
+					<div class="<?php echo $_SESSION['msg']['type']; ?>">
+						<p><?php echo $_SESSION['msg']['text']; ?></p>
+					</div>
+
+					<?php 
+					unset($_SESSION['msg']);
+					?>
+
+				<?php endif; ?>						
+
+				<p>The maximum capacity of a battery changes over time. Because of this change in battery capacity, the charge level indicator in Windows might not show 100% charged. To know the condition of your battery, use the steps in this document to test your battery and calibrate it if necessary. Calibrating the battery resets the battery gauge to accurately display the charge level in Windows. In this document, two methods of testing and calibrating the battery are explained. Also, a manual method for calibrating the battery is presented.</p>
+				<form method="post" action="save.php" id="frmUser" enctype="multipart/form-data">
+					<div class="form-control">
+						<label>username: </label>
+						<input type="text" name="username" id="username">						
+					</div>
+					<div class="form-control">
+						<label>Name: </label>
+						<input type="text" name="txt_name" id="txt_name">						
+					</div>
+					<div class="form-control">
+						<label>Password: </label>
+						<input type="password" name="txt_password" id="txt_password">						
+					</div>
+					<div class="form-control">
+						<label>Email: </label>
+						<input type="email" name="txt_email">						
+					</div>
+					<div class="form-control">
+						<label>Country: </label>
+						<select name="dd_country">
+							<option>Pakistan</option>
+							<option>India</option>
+							<option>Bangladesh</option>
+						</select>						
+					</div>
+					<div class="form-control">
+						<label>Gender: </label>
+						<input type="radio" name="rdo_gender" value="f"> Female
+						<input type="radio" name="rdo_gender" value="m" checked> Male
+					</div>
+					<div class="form-control">
+						<label>Address: </label>
+						<textarea name="txt_address"></textarea>						
+					</div>
+					<div class="form-control">
+						<label></label>
+						<input type="checkbox" name="chk_terms" value="on">	Do you agree with Terms & Services			
+					</div>
+					<div class="form-control">
+						<label>Resume: </label>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+					</div>
+					<button type="submit">Save</button>
+				</form>					
+				
+			</article>
+			<div style="clear: both;"></div>
+		</div>
+
+		
+
+		<footer>
+			<p>Copyright &copy; 2021. All rights reserved.</p>
+		</footer>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert('DOM is loaded');
+		$("#btn_jqeury").click(function(){
+			$('input').toggle();
+		});
+
+		$("#username").change(function(){
+
+			var username = $(this).val();
+			if(username == '') {
+				
+				$("#username").next('div').remove();
+				return false;
+
+			}			
+
+			$.ajax({
+				url: "ajax.php",
+				method: "POST",
+				data: {'username': username},
+				cache: false,
+				success: function(r){
+
+					console.log(r);
+					$("#username").next('div').remove();
+					$("#username").after(r);
+				}
+			});
+
+		});
+
+
+		$("#frmUser").submit(function(e) {
+
+		    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+		    var form = $(this);
+		    var url = form.attr('action');
+		    
+		    $.ajax({
+		    	type: "POST",
+		    	url: url,
+		           data: form.serialize(), // serializes the form's elements.
+		           success: function(data)
+		           {
+		               //alert(data); // show response from the php script.
+		               $("#frmUser").before(data);
+		           }
+		       });
+
+		    
+		});
+
+	});
+</script>
